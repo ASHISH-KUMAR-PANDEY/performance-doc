@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PM Appraisal – FY 2024-25</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #1a1a1a; }
+  header { background: #fff; border-bottom: 2px solid #e5e5e5; padding: 40px 60px 30px; }
+  header h1 { font-size: 1.8rem; font-weight: 700; color: #111; }
+  header p { margin-top: 8px; font-size: 0.95rem; color: #555; max-width: 720px; line-height: 1.6; }
+  .tag-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .tag { background: #f0f0f0; border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; color: #444; font-weight: 500; }
+  .highlight-bar { background: #111; color: #fff; padding: 18px 60px; font-size: 0.95rem; letter-spacing: 0.01em; }
+  .highlight-bar span { color: #f5c842; font-weight: 700; }
+  nav { display: flex; gap: 6px; padding: 18px 60px; background: #fff; border-bottom: 1px solid #e5e5e5; flex-wrap: wrap; }
+  nav button { border: 1px solid #ddd; background: #fff; border-radius: 20px; padding: 6px 16px; font-size: 0.82rem; cursor: pointer; color: #444; transition: all 0.2s; }
+  nav button:hover, nav button.active { background: #111; color: #fff; border-color: #111; }
+  main { padding: 40px 60px; }
+  .section-title { font-size: 1.1rem; font-weight: 700; color: #111; margin-bottom: 6px; }
+  .section-sub { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); font-size: 0.88rem; }
+  thead tr { background: #111; color: #fff; }
+  thead th { padding: 14px 18px; text-align: left; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafafa; }
+  td { padding: 16px 18px; vertical-align: top; line-height: 1.6; color: #333; }
+  td:first-child { font-weight: 600; color: #111; width: 20%; }
+  td ul { padding-left: 16px; }
+  td ul li { margin-bottom: 4px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; margin-bottom: 6px; }
+  .badge-discovery { background: #e8f4fd; color: #1a73e8; }
+  .badge-consumption { background: #e6f9f0; color: #1e8a4a; }
+  .badge-retention { background: #fff3e0; color: #e07b00; }
+  .badge-internal { background: #f3e8ff; color: #7c3aed; }
+  .badge-ai { background: #fce8f3; color: #b5006e; }
+  .metric { display: inline-block; background: #f5f5f5; border-left: 3px solid #111; padding: 6px 12px; border-radius: 0 6px 6px 0; font-size: 0.82rem; margin-top: 6px; color: #222; }
+  .summary-box { background: #fff; border-radius: 10px; padding: 30px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 32px; }
+  .stat { text-align: center; }
+  .stat .num { font-size: 2rem; font-weight: 800; color: #111; }
+  .stat .label { font-size: 0.8rem; color: #888; margin-top: 4px; }
+  .edit-banner { background: #fffde7; border-bottom: 1px solid #f5c842; padding: 10px 60px; font-size: 0.82rem; color: #7a5c00; display: flex; align-items: center; gap: 12px; }
+  .edit-banner button { background: #111; color: #fff; border: none; padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+  [contenteditable]:focus { outline: 2px solid #f5c842; border-radius: 3px; background: #fffde7; }
+  footer { text-align: center; padding: 30px; font-size: 0.8rem; color: #bbb; border-top: 1px solid #eee; margin-top: 40px; }
+  @media(max-width: 700px) {
+    header, main, nav, .highlight-bar, .edit-banner { padding-left: 20px; padding-right: 20px; }
+    thead { display: none; }
+    td { display: block; width: 100% !important; }
+    td:first-child { background: #f5f5f5; font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="edit-banner">
+  ✏️ <strong>Editable mode:</strong> Click any text to edit inline.
+  <button onclick="saveToStorage()">💾 Save</button>
+  <button onclick="clearStorage()" style="background:#888">Reset</button>
+</div>
+
+<header>
+  <h1 contenteditable="true">Product Management – Year in Review</h1>
+  <p contenteditable="true">A structured overview of projects owned, initiatives led, and impact delivered over the past year — spanning category ownership, internal tooling, and AI-led product development.</p>
+  <div class="tag-row">
+    <span class="tag" contenteditable="true">Microdramas</span>
+    <span class="tag" contenteditable="true">CMS</span>
+    <span class="tag" contenteditable="true">Internal Tools</span>
+    <span class="tag" contenteditable="true">AI Projects</span>
+    <span class="tag" contenteditable="true">Discovery</span>
+    <span class="tag" contenteditable="true">Engagement &amp; Retention</span>
+  </div>
+</header>
+
+<div class="highlight-bar">
+  🏆 Headline Impact — Microdramas grew from <span>4–5%</span> to <span>15–20%</span> of total platform consumption this year.
+</div>
+
+<nav>
+  <button class="active" onclick="show('all', this)">All Projects</button>
+  <button onclick="show('cms', this)">CMS</button>
+  <button onclick="show('discovery', this)">Discovery</button>
+  <button onclick="show('consumption', this)">Consumption</button>
+  <button onclick="show('retention', this)">Retention</button>
+  <button onclick="show('tools', this)">Internal Tools</button>
+  <button onclick="show('ai', this)">AI Initiatives</button>
+</nav>
+
+<main>
+  <div class="summary-box">
+    <div class="stat"><div class="num" contenteditable="true">8+</div><div class="label" contenteditable="true">Features Shipped</div></div>
+    <div class="stat"><div class="num" contenteditable="true">15–20%</div><div class="label" contenteditable="true">Microdrama Consumption Share</div></div>
+    <div class="stat"><div class="num" contenteditable="true">13%</div><div class="label" contenteditable="true">Relative Lift in Content Filter Consumption</div></div>
+    <div class="stat"><div class="num" contenteditable="true">3</div><div class="label" contenteditable="true">AI Tools Built</div></div>
+  </div>
+
+  <div id="sec-all">
+
+    <!-- CMS -->
+    <div class="section-title">CMS Infrastructure</div>
+    <div class="section-sub">Foundation project — first 3 months as PM</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-internal">Internal</span><br><span contenteditable="true">BACKSTAGE – Proprietary CMS</span></td>
+        <td contenteditable="true">Launched BACKSTAGE from scratch within the first 3 months of PM transition — a proprietary CMS purpose-built for Stage's content programming needs, with bulk uploads, asset alerts, episode scheduling, and an AI-first approach to operational efficiency.</td>
+        <td><ul>
+          <li contenteditable="true"><strong>80% faster publishing</strong> — from 4–5 hrs to 1 hr per publication</li>
+          <li contenteditable="true">Freed engineering bandwidth from manual ops to feature work</li>
+          <li contenteditable="true">Scalable foundation now powering microdramas &amp; reels</li>
+          <li contenteditable="true">AI subtitle generation in active testing</li>
+        </ul><div class="metric">80% faster publishing · AI-ready · Scalable across formats</div></td>
+      </tr>
+    </tbody></table><br>
+
+    <!-- DISCOVERY -->
+    <div class="section-title">Discovery</div>
+    <div class="section-sub">Getting users to find and start watching microdramas</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">Category Filter &amp; Home UI</span></td>
+        <td><ul>
+          <li contenteditable="true">Designed 3 home UI layout variants (V1/V2/V3)</li>
+          <li contenteditable="true">Tested top vs bottom navigation, icons, and sidebar placements</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Winner: 10% conversion from homepage → content filter (5% better)</li>
+          <li contenteditable="true">Filter usage grew from 7% → 10% over 90 days</li>
+          <li contenteditable="true">Consumption from filters: 2.3% → 2.6% (13% relative lift)</li>
+        </ul><div class="metric">9–10% contribution to microdrama consumption starts</div></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">Cross-Widget Integration</span></td>
+        <td><ul>
+          <li contenteditable="true">Integrated microdramas into Platter + Other Widgets</li>
+          <li contenteditable="true">Explored Genre/Theme widgets as discovery levers</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Genre/Theme widgets validated as a discovery option</li>
+          <li contenteditable="true">Currently at 1.4% of total starts — early but growing</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">M-Web &amp; Off-Platform Discovery</span></td>
+        <td><ul>
+          <li contenteditable="true">Launched Phase 1 of microdrama on M-Web</li>
+          <li contenteditable="true">Ran off-platform discovery experiments</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Enabled low-friction acquisition without requiring app install</li>
+          <li contenteditable="true">YouTube PiP drove 16x more watch completions vs M-Web</li>
+          <li contenteditable="true">Identified M-Web login as key friction point</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">Visual Recognition &amp; Branding</span></td>
+        <td><ul>
+          <li contenteditable="true">Renamed "Drama Shorts" → "Micro Dramas"</li>
+          <li contenteditable="true">Closed visual identity: color, logo, splash screens</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Clearer category identity for users</li>
+          <li contenteditable="true">Consistent brand experience across App + M-Web</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">Title Testing Framework</span></td>
+        <td contenteditable="true">Built and shipped a title testing framework tightly coupled with the Narrative Engine. The system ingests a content piece's script, video file, and stakeholder inputs alongside platform data — and produces AI-generated narrative, title candidates, and thumbnails ready for testing. Fully integrated into the current CMS.</td>
+        <td><ul>
+          <li contenteditable="true">Moves title decisions from gut-feel to a data + AI backed process</li>
+          <li contenteditable="true">Ready to go live — starting with title listing of upcoming content pieces</li>
+          <li contenteditable="true">Early POC experiments validated in Bhojpuri and Haryana markets</li>
+        </ul><div class="metric">Production-ready · CMS-integrated · AI-generated titles &amp; thumbnails</div></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-discovery">Discovery</span><br><span contenteditable="true">Microdrama Onboarding</span></td>
+        <td><ul>
+          <li contenteditable="true">"What are microdramas?" explainer for first-time users</li>
+          <li contenteditable="true">Format tooltips and contextual help</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Reduced cold-start confusion for new users</li>
+          <li contenteditable="true">Improved early engagement for format-unfamiliar users</li>
+        </ul></td>
+      </tr>
+    </tbody></table><br>
+
+    <!-- CONSUMPTION -->
+    <div class="section-title">Consumption</div>
+    <div class="section-sub">Improving the watching experience</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-consumption">Consumption</span><br><span contenteditable="true">Watch Quality Improvements</span></td>
+        <td><ul>
+          <li contenteditable="true">Moved to multi-controller playback</li>
+          <li contenteditable="true">Refactored backend to batch-load episodes (reduce buffering)</li>
+          <li contenteditable="true">Set 1080p as default quality for microdramas</li>
+          <li contenteditable="true">Conducted internet consumption study for the format</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">MUX implemented for ongoing playback quality measurement</li>
+          <li contenteditable="true">Better data foundation for future playback decisions</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-consumption">Consumption</span><br><span contenteditable="true">Make Users Watch More</span></td>
+        <td><ul>
+          <li contenteditable="true">Early exiters (Ep 1–6): A/B — top content push vs. re-hook</li>
+          <li contenteditable="true">Mid exiters (Ep 6–n5): Preview upcoming content</li>
+          <li contenteditable="true">Pre-completion (n–5): Seed the next microdrama</li>
+          <li contenteditable="true">Completion (n): Auto-play, no prompt, seamless transition</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Tracking: second content starts, return rates, D7 retention</li>
+          <li contenteditable="true">Results informing what gets built into the core product</li>
+        </ul></td>
+      </tr>
+    </tbody></table><br>
+
+    <!-- RETENTION -->
+    <div class="section-title">Retention</div>
+    <div class="section-sub">Bringing users back</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-retention">Retention</span><br><span contenteditable="true">Stop Users Who Try to Leave</span></td>
+        <td><ul>
+          <li contenteditable="true">Designed exit-intent interventions at key drop-off points</li>
+          <li contenteditable="true">Completion auto-play to reduce decision friction</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Metrics: second content starts, return rates, D7 retention</li>
+        </ul></td>
+      </tr>
+    </tbody></table><br>
+
+    <!-- INTERNAL TOOLS -->
+    <div class="section-title">Internal Tools</div>
+    <div class="section-sub">Improving team productivity through tooling</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-internal">Internal</span><br><span contenteditable="true">AI – Posters Tool</span></td>
+        <td><ul>
+          <li contenteditable="true">Built in-house AI tool to generate customised posters from video frames</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Creative/marketing team saves time and shares workload</li>
+          <li contenteditable="true">Faster creative testing across campaigns</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-internal">Internal</span><br><span contenteditable="true">AI – QC Tool</span></td>
+        <td><ul>
+          <li contenteditable="true">Built tool to detect video errors (black frames, glitches) automatically</li>
+          <li contenteditable="true">Previously a fully manual, time-intensive process</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true">Production team runs QC checks with zero manual assistance</li>
+          <li contenteditable="true">Reduced human error in content quality verification</li>
+        </ul></td>
+      </tr>
+    </tbody></table><br>
+
+    <!-- AI -->
+    <div class="section-title">AI-Led Strategic Initiatives</div>
+    <div class="section-sub">Company-wide bets with cross-functional impact</div>
+    <table><thead><tr><th>Project</th><th>What Was Done</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-ai">AI</span><br><span contenteditable="true">Stage VIP Club – Tambola</span></td>
+        <td><ul>
+          <li contenteditable="true">Owned end-to-end implementation of weekly Tambola within the Stage VIP Club Programme</li>
+          <li contenteditable="true">Handled both product definition and engineering execution using AI</li>
+          <li contenteditable="true">Open to all eligible users; promoted via push notifications, in-app messaging, reminder IVRs and home screen banners</li>
+          <li contenteditable="true">Tracked cohort behavior week-over-week post each event</li>
+        </ul></td>
+        <td><ul>
+          <li contenteditable="true"><strong>~1,200 users</strong> participated in the Feb 15 event; ~500 were dormant users who reactivated</li>
+          <li contenteditable="true"><strong>75% WoW retention</strong> in Week 1 vs. 60% baseline</li>
+          <li contenteditable="true">Retention improved to <strong>~80% in Week 2</strong>, suggesting habit formation</li>
+          <li contenteditable="true">Cohort consumption lifted from <strong>37% → 50% → 76%</strong></li>
+          <li contenteditable="true"><strong>40% of players returned</strong> the following Sunday for repeat play</li>
+        </ul><div class="metric">Reactivation · 75%→80% retention lift · 37%→76% consumption lift · 40% repeat play</div></td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-ai">AI</span><br><span contenteditable="true">Narrative Engine</span></td>
+        <td contenteditable="true">The Narrative Engine was built collaboratively across teams. My contribution was the integration layer: taking all independently built pieces and incorporating them into the CMS as a single cohesive system. Also led thinking on how AI outputs (titles, narratives, thumbnails) are validated before being used in production.</td>
+        <td><ul>
+          <li contenteditable="true">All components now unified inside the CMS</li>
+          <li contenteditable="true">Feeds directly into the Title Testing Framework — end-to-end pipeline now live</li>
+          <li contenteditable="true">Validation and cross-validation layer built to ensure quality of AI-generated outputs</li>
+          <li contenteditable="true">Ready for use on the next upcoming content piece</li>
+        </ul><div class="metric">CMS-integrated · End-to-end pipeline · Production-ready</div></td>
+      </tr>
+    </tbody></table>
+
+  </div>
+</main>
+
+<footer>PM Appraisal · FY 2024–25 · Stage</footer>
+
+<script>
+  function show(filter, btn) {
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const allRows = document.querySelectorAll('tbody tr');
+    const allTitles = document.querySelectorAll('.section-title, .section-sub');
+    if (filter === 'all') {
+      allRows.forEach(r => r.style.display = '');
+      document.querySelectorAll('table').forEach(t => t.style.display = '');
+      allTitles.forEach(el => el.style.display = '');
+      document.querySelector('.summary-box').style.display = 'grid';
+      return;
+    }
+    document.querySelector('.summary-box').style.display = 'none';
+    const map = { cms: 'internal', discovery: 'discovery', consumption: 'consumption', retention: 'retention', tools: 'internal', ai: 'ai' };
+    const badgeClass = 'badge-' + map[filter];
+    allRows.forEach(row => {
+      const badge = row.querySelector('.badge');
+      if (!badge) { row.style.display = 'none'; return; }
+      const matchesBadge = badge.classList.contains(badgeClass);
+      const text = row.querySelector('td')?.innerText || '';
+      if (filter === 'cms') row.style.display = (text.includes('CMS') || text.includes('BACKSTAGE')) ? '' : 'none';
+      else if (filter === 'tools') row.style.display = (matchesBadge && !text.includes('CMS') && !text.includes('BACKSTAGE')) ? '' : 'none';
+      else row.style.display = matchesBadge ? '' : 'none';
+    });
+    document.querySelectorAll('table').forEach(t => {
+      const visible = [...t.querySelectorAll('tbody tr')].some(r => r.style.display !== 'none');
+      t.style.display = visible ? '' : 'none';
+    });
+    allTitles.forEach(el => el.style.display = '');
+  }
+
+  function saveToStorage() {
+    localStorage.setItem('appraisal_body', document.body.innerHTML);
+    alert('Saved!');
+  }
+  function clearStorage() {
+    localStorage.removeItem('appraisal_body');
+    location.reload();
+  }
+  window.onload = () => {
+    const saved = localStorage.getItem('appraisal_body');
+    if (saved) document.body.innerHTML = saved;
+  };
+</script>
+</body>
+</html>
